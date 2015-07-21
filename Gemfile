@@ -19,6 +19,7 @@ gem 'bourbon'
 gem 'semantic-ui-sass'
 gem 'sprockets-es6'
 gem 'lodash-rails'
+gem 'faraday_middleware'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 

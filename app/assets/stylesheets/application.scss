@@ -13,9 +13,6 @@
  *= require_self
  */
 
-$nprogress-color: #ffcc00;
-$nprogress-height: 3px;
-
 @import 'bourbon';
 @import 'semantic-ui';
 @import 'media-queries';
@@ -27,7 +24,7 @@ $nprogress-height: 3px;
 @import 'lib/footer';
 
 body {
-  background: transparent image-url('crossword.png');
+  background: transparent asset-url('crossword.png');
 
   // Pages
 

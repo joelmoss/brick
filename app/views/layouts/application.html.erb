@@ -15,9 +15,26 @@
 
     <nav class="main">
       <div>
-        <ul id="home-nav">
-          <li><%= link_to 'Home', root_path %></li>
-        </ul>
+
+        <%- if signed_in? -%>
+          <div id="project-selector">
+            <%= link_to semantic_icon(:small, :home, :circular, :inverted) + current_project %>
+            <%- if current_project -%>
+              <div>
+                <%= link_to semantic_icon(:angle, :down, :large), 'javascript:void(0)', class: 'caret' %>
+                <ul>
+                  <%- current_org.projects.each do |project| -%>
+                    <li class="<%= current_project == project && 'active' %>"><%= link_to project, project_path(project) %></li>
+                  <%- end -%>
+                </ul>
+              </div>
+            <%- end -%>
+          </div>
+        <%- else -%>
+          <ul id="home-nav">
+            <li><%= link_to 'Home', root_path %></li>
+          </ul>
+        <%- end -%>
 
         <div id="logo"><%= link_to 'Brick', root_path %></div>
 

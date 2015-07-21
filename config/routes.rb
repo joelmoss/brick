@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   delete '/sign_out' => 'sessions#destroy', as: :sign_out
   get '/auth/failure' => 'sessions#failure'
 
+  resources :projects, except: :index
+
 end

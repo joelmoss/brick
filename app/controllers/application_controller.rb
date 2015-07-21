@@ -5,28 +5,38 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user
   helper_method :signed_in?
+  helper_method :current_org
+  helper_method :current_project
 
   add_breadcrumb 'Dashboard', :root_path
 
 
   private
 
-  def current_user
-    begin
-      @current_user ||= CurrentUser.new(session[:github_auth] || {})
-    rescue
-      nil
+    def current_user
+      begin
+        @current_user ||= CurrentUser.new(session[:github_auth] || {})
+      rescue
+        nil
+      end
     end
-  end
 
-  def signed_in?
-    current_user.signed_in?
-  end
-
-  def authenticate_user!
-    if !signed_in?
-      redirect_to root_url, alert: 'You need to sign in for access to this page.'
+    def signed_in?
+      current_user.signed_in?
     end
-  end
+
+    def authenticate_user!
+      if !signed_in?
+        redirect_to root_url, alert: 'You need to sign in for access to this page.'
+      end
+    end
+
+    def current_org
+      @current_org ||= Buildkite.organization
+    end
+
+    def current_project
+      @current_project ||= nil
+    end
 
 end
