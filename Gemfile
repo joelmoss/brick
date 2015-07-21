@@ -6,7 +6,8 @@ gem 'mime-types', '~> 2.6.1', require: 'mime/types/columnar'
 gem 'rails', '~>4.2'
 gem 'mongoid', '5.0.0.beta'
 
-gem 'devise'
+gem 'omniauth-github'
+gem 'octokit'
 gem 'figaro'
 gem 'simple_form'
 gem 'attribute_normalizer'
@@ -17,7 +18,6 @@ gem 'sass-mediaqueries-rails'
 gem 'bourbon'
 gem 'semantic-ui-sass'
 gem 'sprockets-es6'
-gem 'react-rails'
 gem 'lodash-rails'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby

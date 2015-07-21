@@ -10,6 +10,30 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
  *= require_self
  */
+
+$nprogress-color: #ffcc00;
+$nprogress-height: 3px;
+
+@import 'bourbon';
+@import 'semantic-ui';
+@import 'media-queries';
+
+// Libs
+@import 'lib/utils';
+@import 'lib/nav';
+@import 'lib/header';
+@import 'lib/footer';
+
+body {
+  background: transparent image-url('crossword.png');
+
+  // Pages
+
+}
+
+main {
+  @extend .container;
+  margin-bottom: 150px;
+}

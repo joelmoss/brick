@@ -1,0 +1,41 @@
+.container {
+  width: 1024px;
+  margin: 0 auto;
+  @include clearfix;
+}
+
+.pull.right {
+  float: right;
+}
+
+// Reposition nprogress bar and remove blur effect.
+#nprogress {
+  .bar {
+    top: 63px;
+  }
+
+  .peg {
+    display: none;
+  }
+}
+
+form {
+  .ui.buttons {
+    margin-top: 30px;
+    border-top: 1px solid #eee;
+    padding-top: 14px;
+    display: block;
+  }
+
+  .hint {
+    color: #888;
+    font-size: 12px;
+    margin: 5px 3px;
+  }
+}
+
+// Force background colour of basic buttons
+.ui.basic.buttons .button,
+.ui.basic.button {
+  background: #fff !important;
+}
