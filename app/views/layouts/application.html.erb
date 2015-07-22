@@ -18,13 +18,13 @@
 
         <%- if signed_in? -%>
           <div id="project-selector">
-            <%= link_to semantic_icon(:small, :home, :circular, :inverted) + current_project %>
-            <%- if current_project -%>
+            <%= link_to semantic_icon(:small, :home, :circular, :inverted) + @project %>
+            <%- if current_org.projects.count > 0 -%>
               <div>
                 <%= link_to semantic_icon(:angle, :down, :large), 'javascript:void(0)', class: 'caret' %>
                 <ul>
                   <%- current_org.projects.each do |project| -%>
-                    <li class="<%= current_project == project && 'active' %>"><%= link_to project, project_path(project) %></li>
+                    <li class="<%= @project == project && 'active' %>"><%= link_to project, project_path(project) %></li>
                   <%- end -%>
                 </ul>
               </div>

@@ -6,7 +6,6 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
   helper_method :signed_in?
   helper_method :current_org
-  helper_method :current_project
 
   add_breadcrumb 'Dashboard', :root_path
 
@@ -33,10 +32,6 @@ class ApplicationController < ActionController::Base
 
     def current_org
       @current_org ||= Buildkite.organization
-    end
-
-    def current_project
-      @current_project ||= nil
     end
 
 end

@@ -1,12 +1,41 @@
 <%- if signed_in? -%>
 
-  <h4>Projects</h4>
-  <ul>
-    <%- current_org.projects.each do |project| -%>
-      <li><%= link_to project, project_path(project) %></li>
-    <%- end -%>
-  </ul>
+  <%- if current_org.projects.count > 0 -%>
+
+    <h3 class="ui dividing header">
+      <%= current_org %> Projects
+    </h3>
+    <div class="ui horizontal large very relaxed divided list">
+      <%- current_org.projects.each do |project| -%>
+        <div class="item">
+          <%= semantic_icon :large, :aligned, :middle, project[:provider][:id] %>
+          <div class="content">
+            <div class="right floated content">
+              <%= link_to semantic_icon(:external), project[:web_url], target: '_blank', data: { content: 'Open project on Buildkite' } %>
+            </div>
+            <div class="header"><%= link_to project, project_path(project) %></div>
+            <div class="description"><%= project[:repository] %></div>
+          </div>
+        </div>
+      <%- end -%>
+    </div>
+
+  <%- else -%>
+
+    <div class="ui icon message">
+      <%= semantic_icon :info, :circle %>
+      <div class="content">
+        <div class="header">
+          You do not currently have any Buildkite projects.
+        </div>
+        <p><%= link_to 'Create your first project now', "https://buildkite.com/organizations/#{current_org.to_param}/projects/new", target: '_blank' %>, then come back here and reload this page.</p>
+      </div>
+    </div>
+
+  <%- end -%>
 
 <%- else -%>
+
   <div class="alert alert-danger">You are not signed in! <%= link_to 'Sign in via Github...', '/auth/github', class: 'alert-link' %></div>
+
 <%- end -%>
