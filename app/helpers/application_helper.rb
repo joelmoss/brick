@@ -23,4 +23,9 @@ module ApplicationHelper
     end
   end
 
+  def icon(*names)
+    options = names.extract_options!
+    content_tag :i, nil, options.merge(class: names.map{|name| "#{name.to_s.gsub('_','-')}" } << 'icon')
+  end
+
 end

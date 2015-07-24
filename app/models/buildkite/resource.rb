@@ -1,7 +1,5 @@
 class Buildkite::Resource
-
   attr_reader :data, :slug
-
 
   def [](key)
     data[key]

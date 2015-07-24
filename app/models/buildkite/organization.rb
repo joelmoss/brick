@@ -12,7 +12,7 @@ class Buildkite::Organization < Buildkite::Resource
   end
 
   def projects
-    Buildkite.projects
+    @projects ||= Buildkite.projects
   end
 
 end

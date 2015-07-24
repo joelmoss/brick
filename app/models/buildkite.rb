@@ -7,8 +7,8 @@ class Buildkite
     VERSION  = 'v1'
 
 
-    def get(path)
-      connection.get path
+    def get(path, params={})
+      connection.get path, params
     end
 
 
@@ -22,7 +22,7 @@ class Buildkite
 
           faraday.response :raise_error
           faraday.response :json
-          faraday.response :logger if Rails.env.development?
+          # faraday.response :logger if Rails.env.development?
 
           faraday.adapter Faraday.default_adapter
         end

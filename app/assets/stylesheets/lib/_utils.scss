@@ -8,34 +8,25 @@
   float: right;
 }
 
-// Reposition nprogress bar and remove blur effect.
-#nprogress {
-  .bar {
-    top: 63px;
-  }
+.zero.padded {
+  padding: 0;
+}
 
-  .peg {
-    display: none;
+.center {
+  text-align: center;
+}
+
+@each $dir in top, right, bottom, left {
+  .ui.padded.#{$dir} {
+    padding-#{$dir}: 10px;
   }
 }
 
-form {
-  .ui.buttons {
-    margin-top: 30px;
-    border-top: 1px solid #eee;
-    padding-top: 14px;
-    display: block;
-  }
-
-  .hint {
-    color: #888;
-    font-size: 12px;
-    margin: 5px 3px;
-  }
+.ui[class*="very very relaxed"].list:not(.horizontal) > .item {
+  padding-top: 1.857143em;
+  padding-bottom: 1.857143em;
 }
 
-// Force background colour of basic buttons
-.ui.basic.buttons .button,
-.ui.basic.button {
-  background: #fff !important;
+ui.uppercase {
+  text-transform: uppercase;
 }

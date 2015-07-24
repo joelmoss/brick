@@ -78,13 +78,21 @@ nav.main {
           &:hover {
             color: lighten(#79A848, 40%);
           }
+
+          &:first-child {
+            margin-right: 10px;
+          }
+
+          &.current-project-link {
+            margin-top: 5px;
+          }
         }
 
         // caret and dropdown
         > div {
           float: left;
           position: relative;
-          top: 2px;
+          top: 4px;
 
           > a {
             font-size: em(14);

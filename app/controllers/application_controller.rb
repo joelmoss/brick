@@ -34,4 +34,8 @@ class ApplicationController < ActionController::Base
       @current_org ||= Buildkite.organization
     end
 
+    def github
+      @github ||= Octokit::Client.new access_token: session[:github_auth]['token']
+    end
+
 end

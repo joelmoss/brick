@@ -8,10 +8,10 @@
     <div class="ui horizontal large very relaxed divided list">
       <%- current_org.projects.each do |project| -%>
         <div class="item">
-          <%= semantic_icon :large, :aligned, :middle, project[:provider][:id] %>
+          <%= icon :large, :aligned, :middle, project[:provider][:id] %>
           <div class="content">
             <div class="right floated content">
-              <%= link_to semantic_icon(:external), project[:web_url], target: '_blank', data: { content: 'Open project on Buildkite' } %>
+              <%= link_to icon(:external, data: { content: 'Open project on Buildkite' }), project[:web_url], target: '_blank' %>
             </div>
             <div class="header"><%= link_to project, project_path(project) %></div>
             <div class="description"><%= project[:repository] %></div>
@@ -23,7 +23,7 @@
   <%- else -%>
 
     <div class="ui icon message">
-      <%= semantic_icon :info, :circle %>
+      <%= icon :info, :circle %>
       <div class="content">
         <div class="header">
           You do not currently have any Buildkite projects.

@@ -18,13 +18,19 @@
 
         <%- if signed_in? -%>
           <div id="project-selector">
-            <%= link_to semantic_icon(:small, :home, :circular, :inverted) + @project %>
+            <%= link_to icon(:small, :home, :circular, :inverted), root_path %>
+            <%= link_to @project, project_path(@project), class: 'current-project-link' if @project %>
             <%- if current_org.projects.count > 0 -%>
               <div>
-                <%= link_to semantic_icon(:angle, :down, :large), 'javascript:void(0)', class: 'caret' %>
+                <%- if @project -%>
+                  <%= link_to icon(:angle, :down, :large), 'javascript:void(0)', class: 'caret' %>
+                <%- else -%>
+                  <%= link_to raw("Select project #{icon(:angle, :down, :large)}"), 'javascript:void(0)', class: 'caret' %>
+                <%- end -%>
+
                 <ul>
                   <%- current_org.projects.each do |project| -%>
-                    <li class="<%= @project == project && 'active' %>"><%= link_to project, project_path(project) %></li>
+                    <li class="<%= @project && @project[:id] == project[:id] && 'active' %>"><%= link_to project, project_path(project) %></li>
                   <%- end -%>
                 </ul>
               </div>
@@ -41,7 +47,7 @@
         <ul id="user-nav">
           <%- if signed_in? -%>
             <li>signed in as <%= current_user %></li>
-            <li><%= link_to semantic_icon(:sign, :out), sign_out_path, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+            <li><%= link_to icon(:sign, :out), sign_out_path, method: :delete, data: { confirm: 'Are you sure?' } %></li>
           <%- else -%>
             <li><%= link_to 'Sign in', '/auth/github' %></li>
           <%- end -%>

@@ -10,11 +10,15 @@ class Buildkite::Resources
   private
 
     def response
-      @response ||= client.get(path)
+      @response ||= client.get(path, params)
     end
 
     def path
       ''
+    end
+
+    def params
+      {}
     end
 
     def client
