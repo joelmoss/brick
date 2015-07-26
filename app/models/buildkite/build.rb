@@ -10,6 +10,10 @@ class Buildkite::Build < Buildkite::Resource
     end
   end
 
+  def artifact
+    Buildkite::Artifact.new(@project_slug, self[:number])
+  end
+
   def path
     "organizations/#{ENV['BUILDKITE_ORG_NAME']}/projects/#{@project_slug}/builds/#{slug}"
   end

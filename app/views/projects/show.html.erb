@@ -72,7 +72,17 @@
               <small data-content="<%= DateTime.parse(build[:finished_at]).to_s :short %>">
                 finished <%= time_ago_in_words DateTime.parse(build[:finished_at]) %> ago
               </small>
+              <%- if build.artifact.nil? -%>
+                <small class="ui left right padded">|</small>
+                <small><i>no artifact!</i></small>
+              <%- end -%>
             </small>
+
+            <%- unless build.artifact.nil? -%>
+              <div>
+                <%= build.artifact %>
+              </div>
+            <%- end -%>
           </div>
         <%- else -%>
           <small class="description">
